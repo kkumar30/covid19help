@@ -14,6 +14,7 @@ import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import dj_database_url
+from django_prices.utils.formatting import get_currency_fraction
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -122,6 +123,20 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
+
+DEFAULT_COUNTRY = os.environ.get("DEFAULT_COUNTRY", "US")
+DEFAULT_CURRENCY = os.environ.get("DEFAULT_CURRENCY", "USD")
+DEFAULT_DECIMAL_PLACES = get_currency_fraction(DEFAULT_CURRENCY)
+DEFAULT_MAX_DIGITS = 12
+DEFAULT_CURRENCY_CODE_LENGTH = 3
+
+# The default max length for the display name of the
+# sender email address.
+# Following the recommendation of https://tools.ietf.org/html/rfc5322#section-2.1.1
+DEFAULT_MAX_EMAIL_DISPLAY_NAME_LENGTH = 78
+
+# note: having multiple currencies is not supported yet
+AVAILABLE_CURRENCIES = [DEFAULT_CURRENCY]
 
 
 # Static files (CSS, JavaScript, Images)

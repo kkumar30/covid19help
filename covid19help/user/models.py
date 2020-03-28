@@ -47,7 +47,6 @@ class UserManager(BaseUserManager):
 
 
 class User(PermissionsMixin, AbstractBaseUser):
-    # TODO add validator for .edu emails
     email = models.EmailField(unique=True)
     phone = PhoneField(blank=True, help_text='Contact phone number')
     first_name = models.CharField(max_length=256, blank=True)
