@@ -41,11 +41,16 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    'covid19help.user',
 
     'phone_field',
-    'django_prices'
+    'django_prices',
+    # 'location_field.apps.DefaultConfig',
+    'geoposition',
+    'covid19help.user',
+    'covid19help.commodity',
 ]
+
+GEOPOSITION_GOOGLE_MAPS_API_KEY = 'YOUR_API_KEY'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -89,7 +94,6 @@ DATABASES = {
         default="postgres://covid19help:covid19passhelp@localhost:5432/covid19help", conn_max_age=600
     )
 }
-
 
 
 # Password validation

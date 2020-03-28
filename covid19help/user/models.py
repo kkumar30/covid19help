@@ -8,6 +8,7 @@ from django.contrib.auth.models import (
     PermissionsMixin,
 )
 from django.utils.translation import pgettext_lazy
+from geoposition.fields import GeopositionField
 from phone_field import PhoneField
 
 from versatileimagefield.fields import VersatileImageField
@@ -52,6 +53,13 @@ class User(PermissionsMixin, AbstractBaseUser):
     first_name = models.CharField(max_length=256, blank=True)
     last_name = models.CharField(max_length=256, blank=True)
     has_kid = models.BooleanField(default=False)
+    is_doctor = models.BooleanField(default=False)
+    ip_address = models.GenericIPAddressField(blank=True, null=True)
+
+
+    # Need to see
+    # https://stackoverflow.com/questions/12942894/how-to-get-address-from-latitude-longitude-in-django-geoip
+    location = GeopositionField(null=True, blank=True)
 
     # Meta inf
     is_active = models.BooleanField(default=True)
